@@ -7,9 +7,10 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Username' }).press('Tab');
   await page.getByRole('textbox', { name: 'Password' }).fill('torydev');
   await page.getByRole('button', { name: 'Login' }).click();
+  await page.goto('https://com.stg.aem.toryburch.com/en-us/');
+  await page.reload();
   await page.getByRole('button', { name: 'Close' }).click();
   await page.getByRole('button', { name: 'My Account' }).hover();
-  await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
   await page.getByRole('button', { name: 'Sign In' }).click();
   await page.getByRole('textbox', { name: 'Email Address' }).click();
   await page.getByRole('textbox', { name: 'Email Address' }).fill('basingh@destm.com');
@@ -17,9 +18,9 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: 'show password Password' }).fill('Khalsa@19841699');
   await page.getByRole('button', { name: 'Sign in' }).click();
   await page.getByRole('button', { name: 'My Account' }).hover();
-  await expect(page.getByRole('button', { name: 'My Account' })).toBeVisible();
-  await page.getByLabel('My Account').click();
-  await page.getByRole('button', { name: 'Sign Out' }).click();
+  await expect(page.getByLabel('My Account')).toContainText('Hi, Balbindar');
+  await page.locator('li').filter({ hasText: 'Sign Out' }).click();
+  await page.getByTitle('Sign Out').click();
   await page.getByRole('button', { name: 'My Account' }).hover();
   await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
 });
