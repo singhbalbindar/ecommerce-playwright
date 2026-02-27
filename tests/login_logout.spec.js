@@ -8,7 +8,7 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: 'Password' }).fill('torydev');
   await page.getByRole('button', { name: 'Login' }).click();
   await page.goto('https://com.stg.aem.toryburch.com/en-us/');
-  await page.reload();
+  await page.keyboard.press('Meta+R');
   await page.getByRole('button', { name: 'Close' }).click();
   await page.getByRole('button', { name: 'My Account' }).hover();
   await page.getByRole('button', { name: 'Sign In' }).click();
