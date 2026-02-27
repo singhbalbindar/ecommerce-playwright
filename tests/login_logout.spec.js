@@ -21,6 +21,7 @@ test('test', async ({ page }) => {
   await expect(page.getByLabel('My Account')).toContainText('Hi, Balbindar');
   await page.locator('li').filter({ hasText: 'Sign Out' }).click();
   await page.getByTitle('Sign Out').click();
+  await page.waitForTimeout(2000);
   await page.getByRole('button', { name: 'My Account' }).hover();
   await expect(page.getByRole('button', { name: 'Sign In' })).toBeVisible();
 });
