@@ -5,7 +5,14 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30000,
   retries: 1,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [
+    ['list'],
+    ['allure-playwright', {
+      outputFolder: 'allure-results',
+      detail: true,
+      suiteTitle: false
+    }]
+  ],
   use: {
     headless: true,
     viewport: { width: 1280, height: 720 },
